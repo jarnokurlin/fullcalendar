@@ -1,4 +1,3 @@
-
 fcViews.resourceDay = ResourceDayView;
 
 function ResourceDayView(element, calendar) {
@@ -21,9 +20,6 @@ function ResourceDayView(element, calendar) {
 		if (delta) {
 			addDays(date, delta * 1);
 			if (!opt('weekends')) skipWeekend(date, delta < 0 ? -1 : 1);
-		}
-		else {
-			date = new Date();
 		}
 
 		var start = addMinutes(cloneDate(date, true),parseTime(opt('minTime')));
