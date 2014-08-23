@@ -517,6 +517,9 @@ function Calendar(element, options, eventSources, resourceSources) {
 			options[name] = value;
 			updateSize();
 		}
+		if (name == 'firstDay') {
+		    options[name] = value;
+		}
 	}
 	
 	
