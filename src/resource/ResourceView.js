@@ -84,6 +84,7 @@ function ResourceView(element, calendar, viewName) {
 	var clearOverlays = t.clearOverlays;
 	var formatDate = calendar.formatDate;
 	var getResources = t.getResources;
+	var reportSelection = t.reportSelection; //Revert back to SelectionManager's reportSelection
 
 	// locals
 	var table;
@@ -808,15 +809,6 @@ function ResourceView(element, calendar, viewName) {
 			left: $(head).find('th.fc-resourceName').width(),
 			right: $(head).width()
 		};
-	}
-
-	function reportSelection(startDate, endDate, allDay, ev, resource) {
-		if (typeof resource == 'object' && resource.readonly === true) {
-			return false;
-		}
-
-		selected = true;
-		trigger('select', null, startDate, endDate, allDay, ev, '', resource);
 	}
 
 	function isResourceEditable(resourceId) {

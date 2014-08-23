@@ -39,13 +39,13 @@ function SelectionManager() {
 	}
 	
 
-	function select(startDate, endDate, allDay) {
+	function select(startDate, endDate, allDay, ev, view, resource) {
 		unselect();
 		if (!endDate) {
 			endDate = defaultSelectionEnd(startDate, allDay);
 		}
 		renderSelection(startDate, endDate, allDay);
-		reportSelection(startDate, endDate, allDay);
+		reportSelection(startDate, endDate, allDay, ev, view, resource);
 	}
 	
 	
@@ -58,9 +58,9 @@ function SelectionManager() {
 	}
 	
 	
-	function reportSelection(startDate, endDate, allDay, ev) {
+	function reportSelection(startDate, endDate, allDay, ev, view, resource) {
 		selected = true;
-		trigger('select', null, startDate, endDate, allDay, ev);
+		trigger('select', null, startDate, endDate, allDay, ev, view, resource);
 	}
 	
 	
