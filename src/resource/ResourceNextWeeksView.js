@@ -35,7 +35,7 @@ function ResourceNextWeeksView(element, calendar) {
 			var end = addDays(cloneDate(start), opt('numberOfWeeks') * 7);
 		}
 		else {
-			date = new Date();
+			date = date || new Date();
 			var start = addDays(cloneDate(date), -((date.getDay() - opt('firstDay') + weekDays) % weekDays), false);
 			var end = addDays(cloneDate(start), opt('numberOfWeeks')*7);
 		}
