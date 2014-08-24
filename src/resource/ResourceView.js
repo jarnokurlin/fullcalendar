@@ -192,7 +192,7 @@ function ResourceView(element, calendar, viewName) {
 
 		// trigger resourceRender callback now when the skeleton is ready
 		body.find('td.fc-resourceName').each(function(i, resourceElement) {
-			trigger('resourceRender', resources[i], resourceElement, viewName);
+			trigger('resourceRender', resources[i], resources[i], resourceElement);
 		});
 
 		firstRowCellInners = bodyRows.eq(0).find('.fc-day > div');
