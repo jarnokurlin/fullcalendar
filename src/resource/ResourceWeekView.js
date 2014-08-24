@@ -27,7 +27,7 @@ function ResourceWeekView(element, calendar) {
 			var end = addDays(cloneDate(start), 7);
 		}
 		else {
-			date = new Date();
+			date = date || new Date();
 			var start = addDays(cloneDate(date, true), -((date.getDay() - opt('firstDay') + 7) % 7));
 			var end = addDays(cloneDate(start), 7);
 		}
