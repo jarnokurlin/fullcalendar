@@ -84,6 +84,7 @@ function ResourceView(element, calendar, viewName) {
 	var clearOverlays = t.clearOverlays;
 	var formatDate = calendar.formatDate;
 	var getResources = t.getResources;
+	var reportSelection = t.reportSelection; //Revert back to SelectionManager's reportSelection
 
 	// locals
 	var table;
@@ -191,7 +192,7 @@ function ResourceView(element, calendar, viewName) {
 
 		// trigger resourceRender callback now when the skeleton is ready
 		body.find('td.fc-resourceName').each(function(i, resourceElement) {
-			trigger('resourceRender', resources[i], resourceElement, viewName);
+			trigger('resourceRender', resources[i], resources[i], resourceElement);
 		});
 
 		firstRowCellInners = bodyRows.eq(0).find('.fc-day > div');
@@ -810,15 +811,6 @@ function ResourceView(element, calendar, viewName) {
 		};
 	}
 
-	function reportSelection(startDate, endDate, allDay, ev, resource) {
-		if (typeof resource == 'object' && resource.readonly === true) {
-			return false;
-		}
-
-		selected = true;
-		trigger('select', null, startDate, endDate, allDay, ev, '', resource);
-	}
-
 	function isResourceEditable(resourceId) {
 		var resources = getResources; // this caches resources, so don't worry about loading times...
 		$(resources).each(function(i, resource) {
@@ -865,7 +857,7 @@ function ResourceView(element, calendar, viewName) {
 					if (+dates[0] == +dates[1]) {
 						reportDayClick(dates[0],(viewName == 'resourceDay' ? false : true), ev, resources[row]);
 					}
-					reportSelection(dates[0], (viewName == 'resourceDay' ? addMinutes(dates[1], opt('slotMinutes')) : dates[1]), (viewName == 'resourceDay' ? false : true), ev, resources[row]);
+					reportSelection(dates[0], (viewName == 'resourceDay' ? addMinutes(dates[1], opt('slotMinutes')) : dates[1]), (viewName == 'resourceDay' ? false : true), ev, t, resources[row]); //Added the CurrentView (t) to reportSelection Call
 				}
 			});
 		}

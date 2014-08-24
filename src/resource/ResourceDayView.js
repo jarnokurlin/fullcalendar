@@ -23,7 +23,7 @@ function ResourceDayView(element, calendar) {
 			if (!opt('weekends')) skipWeekend(date, delta < 0 ? -1 : 1);
 		}
 		else {
-			date = new Date();
+			date = date || new Date();
 		}
 
 		var start = addMinutes(cloneDate(date, true),parseTime(opt('minTime')));
